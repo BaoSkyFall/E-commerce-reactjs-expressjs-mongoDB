@@ -42,8 +42,9 @@ router.post("/login", async (req, res) => {
       user.password,
       process.env.PASS_SEC
     );
+    console.log('hashedPassword:', hashedPassword)
     const OriginalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
-
+    console.log('OriginalPassword:', OriginalPassword)
     OriginalPassword !== req.body.password &&
       res.status(401).json("Wrong credentials!");
 
@@ -55,7 +56,7 @@ router.post("/login", async (req, res) => {
       process.env.JWT_SEC,
       { expiresIn: "3d" }
     );
-
+    console.log('accessToken:', accessToken)
     const { password, ...others } = user._doc;
 
     res.status(200).json({ ...others, accessToken });
