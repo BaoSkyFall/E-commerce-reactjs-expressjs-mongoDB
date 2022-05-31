@@ -18,7 +18,7 @@ import Login from "./pages/login/Login";
 import { useSelector } from "react-redux";
 
 function App() {
-  const admin = useSelector((state) => state.user.currentUser ? state.user.currentUser.isAdmin : true);
+  const admin = useSelector((state) => state.user.currentUser ? state.user.currentUser.isAdmin : false);
   return (
     <Router>
       <Switch>
